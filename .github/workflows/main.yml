@@ -8,17 +8,26 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: ftp.rolandoff.com #${{ secrets.FTP_SERVER }}
-        username: rolando@rolandoff.com #${{ secrets.FTP_USERNAME }}
-        password: Antibes@10! #${{ secrets.FTP_PASSWORD }}
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         protocol: ftps
         local-dir: ./
         server-dir: /public_html/
-        log-level: verbose  # ← Añade más detalles en los logs
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          .github/**
+          README.md
+        log-level: verbose
 
