@@ -1,14 +1,24 @@
-  name: Deploy to FTP
-  # You may pin to the exact commit or the version.
-  # uses: MartinKukolos/action-ftp-deployment@ebc5f9b8a6f6dd8ec5d8e6228d466d87adc34db2
-  uses: MartinKukolos/action-ftp-deployment@v18
-  with:
-    # Address of your FTP server
-    ftp-server: ftp.rolandoff.com
-    # User with access to your FTP share
-    ftp-user: rolando@rolandoff.com
-    # Your FTP password
-    ftp-password: Antibes@10!
-    # Folder where are files you want upload to the server
-    source-folder: ./
-          
+name: Deploy to LWS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        protocol: ftps
+        local-dir: ./
+        server-dir: /public_html/
+        log-level: verbose  # ← Añade más detalles en los logs
+
