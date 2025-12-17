@@ -1,4 +1,4 @@
-             - name: Deploy to FTP
+  name: Deploy to FTP
   # You may pin to the exact commit or the version.
   # uses: MartinKukolos/action-ftp-deployment@ebc5f9b8a6f6dd8ec5d8e6228d466d87adc34db2
   uses: MartinKukolos/action-ftp-deployment@v18
