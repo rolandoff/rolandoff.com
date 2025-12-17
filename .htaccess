@@ -1,1 +1,2 @@
+# Set page.html as the default directory index for blog posts
 DirectoryIndex page.html index.html
