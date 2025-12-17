@@ -1,0 +1,14 @@
+             - name: Deploy to FTP
+  # You may pin to the exact commit or the version.
+  # uses: MartinKukolos/action-ftp-deployment@ebc5f9b8a6f6dd8ec5d8e6228d466d87adc34db2
+  uses: MartinKukolos/action-ftp-deployment@v18
+  with:
+    # Address of your FTP server
+    ftp-server: ftp.rolandoff.com
+    # User with access to your FTP share
+    ftp-user: rolando@rolandoff.com
+    # Your FTP password
+    ftp-password: Antibes@10!
+    # Folder where are files you want upload to the server
+    source-folder: ./
+          
